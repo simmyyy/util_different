@@ -1,53 +1,62 @@
-##cloning new repository
+## cloning new repository
 git clone [repository name]
 
-##set new repository
+## set new repository
 git remote add origin https://bitbucket.org/simmy223/util-different
 git pull origin master
 
-##adding files
+## adding files
 git add FILENAME
 git add --all
 
-#commiting files
+## commiting files
 git commit -am "new git commands"
 
-#pushing files
+## pushing files
 git push -u origin <branch>
 
-##setting explicitly remote repository
+## setting explicitly remote repository
 git remote -v
 git remote set-url --push origin user@example.com:repo.git
 git remote set-url origin http://username@app.name.com/a/APP_NAME <--address in general
 
-##chaning username and email for all projects
+## chaning username and email for all projects
 git config --global user.name "John Doe"
 git config --global user.email "john@doe.org"
 
-##changing username and email to one particular project
+## changing username and email to one particular project
 git config user.name "John Doe"
 git config user.email "john@doe.org"
 
-
-##view last commits
+## view last commits
 git log
 git log -1
 
-
-##reset last commit (files will remain updated)
+## reset last commit (files will remain updated)
 git reset --soft HEAD~1
 git reset HEAD~1
 
+## Once conflicts occur use the following (after adding mergetool):
+git mergetool after 
 
-##GERRIT
+## Adding mergetool
+git config --global --add merge.tool kdiff3
+git config --global --add mergetool.kdiff3.path "C:/Program Files/KDiff3/kdiff3.exe"
+git config --global --add mergetool.kdiff3.trustExitCode false
 
-##commit hookup
-curl -Lo ./.git/hooks/commit-msg https://gerrit.pg.com/tools/hooks/commit-msg
-chmod u+x ./.git/hooks/commit-msg
-
-##push for code review
-git push origin refs/heads/master:refs/for/master
-git push origin HEAD:refs/for/master
+git config --global --add diff.guitool kdiff3
+git config --global --add difftool.kdiff3.path "C:/Program Files/KDiff3/kdiff3.exe"
+git config --global --add difftool.kdiff3.trustExitCode false
 
 ##last commit id - short version
 git rev-parse --short HEAD
+
+## GERRIT
+
+## commit hookup
+curl -Lo ./.git/hooks/commit-msg https://gerrit.pg.com/tools/hooks/commit-msg
+chmod u+x ./.git/hooks/commit-msg
+
+## push for code review
+git push origin refs/heads/master:refs/for/master
+git push origin HEAD:refs/for/master
