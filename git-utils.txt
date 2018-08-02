@@ -37,7 +37,7 @@ git reset --soft HEAD~1
 git reset HEAD~1
 
 ## Once conflicts occur use the following (after adding mergetool):
-git mergetool after 
+git mergetool
 
 ## Adding mergetool
 git config --global --add merge.tool kdiff3
