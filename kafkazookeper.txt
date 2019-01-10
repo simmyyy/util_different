@@ -1,0 +1,38 @@
+#######################
+#######KAFKA###########
+######################
+
+
+# Sample Kafka directory
+/opt/kafka/bin
+
+# Starting Kafka server
+/opt/kafka/bin/kafka-server-start.sh ../config/server.properties
+
+# Delete Kafka Topic if exists
+./kafka-topics.sh --zookeeper localhost:2181 --delete --topic fxrate
+
+# Create Kafka Topic if does not exist
+./kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic fxrate
+
+# Start Kafka Producer 
+./kafka-console-producer.sh --broker-list localhost:9092 --topic testing
+
+# Start Kafka Consumer
+./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic testing --from-beginning
+
+
+
+
+
+
+#####################
+#####ZOOKEPER########
+####################
+
+# check if zookeper is running
+sudo systemctl status zookeeper
+
+# start Zookeper
+sudo systemctl start zookeeper
+
