@@ -16,6 +16,17 @@ psql
 
 \q 				#quit
 
-CREATE DATABASE tradesys; 	#create database
+\l 				#list databases
 
 \c tradesys			#connect database
+
+
+
+
+## ADMIN UTITLS
+create database tradesys;
+create user tradesysuser with encrypted password 'admin';
+grant all privileges on database tradesys to tradesysuser;
+
+
+

@@ -9,4 +9,12 @@ sudo tar xfvz /tmp/openjdk-11+28_linux-x64_bin.tar.gz --directory /usr/lib/jvm
 rm -f /tmp/openjdk-11+28_linux-x64_bin.tar.gz
 /usr/lib/jvm/jdk-11/bin/java -version
 
+# Java compiler urils (JITWatch could be used also)
 
+
+# Unlocking JVM Diagnostics options while compiling, can be also outputed to log file
+# by adding LogCompilation, destination file can be changed by setting LogFile parameter
+java -XX:+UnlockDiagnosticVMOptions -XX:+LogCompilation -XX:LogFile=foo.log 
+
+# it prints thresholds (counters) for different JVM tiers
+java -XX:+PrintFlagsFinal
