@@ -29,4 +29,11 @@ create user tradesysuser with encrypted password 'admin';
 grant all privileges on database tradesys to tradesysuser;
 
 
+## Mongo-TO-SQL query examples and descriptions
 
+# SELECT id, dataProvider FROM fxrate WHERE 1=1 ORDER BY id DESC
+# NOTE: find({},...) - {} means that no WHERE filter are applied to the query
+db.getCollection("fxrate").find({},{_id: 1, dataProvider: 1}).sort({_id:-1}).limit(1)
+
+# DELETE FROM fxrate WHERE id = ObjectId(...)
+db.getCollection("fxrate").remove( {"_id": ObjectId("4d512b45cc9374271b02ec4f")});
